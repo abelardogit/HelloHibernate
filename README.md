@@ -1,0 +1,1 @@
+# What HELLOHIBERNATE contains
