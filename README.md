@@ -17,18 +17,48 @@ La clase principal de este proyecto.
 En ella podrás encontrar 4 métodos:
 - singleEntity: código de ejemplo de cómo crear un dao, una entidad, cómo se guarda en la base de datos y, finalmente, cómo 
 se cierra la sesión.
+- oneToOne: código de ejemplo de cómo crear un dao, dos entidades, cómo se guardan en la base de datos y, finalmente, cómo
+se cierra la sesión.
 
-## StudentDAO
+---
+
+## Single entity
+
+### StudentDAO
 
 Ubicación: <code>java/src/daos/ </code>
 
 Clase que ejecuta las operaciones CRUD con la base de datos.
 
-## Entidad simple Student
+### Entidad simple Student
 
 Ubicación: <code>java/src/entities/ </code>
 
 Representa la entidad Student. 
+
+---
+
+## One to one relationship
+
+### UserDAO
+
+Ubicación: <code>java/src/daos/ </code>
+
+Clase que ejecuta las operaciones CRUD con la base de datos.
+
+### Entidad simple User
+
+Ubicación: <code>java/src/entities/ </code>
+
+Representa la entidad User.
+
+### Entidad simple Address
+
+Ubicación: <code>java/src/entities/ </code>
+
+Representa la entidad Address.
+
+---
 
 ## HibernateUtil
 
