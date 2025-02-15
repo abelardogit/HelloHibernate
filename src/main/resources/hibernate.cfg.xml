@@ -30,5 +30,7 @@
 
         <!-- Entities -->
         <mapping class="entities.Student"/>
+        <mapping class="entities.User"/>
+        <mapping class="entities.Address"/>
     </session-factory>
 </hibernate-configuration>
