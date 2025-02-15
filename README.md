@@ -43,6 +43,9 @@ Representa la entidad Student.
 
 ## Relación uno a uno
 
+## Escenario
+Un usuario tiene una dirección. En una dirección solo vive un usuario.
+
 ### UserDAO
 
 Ubicación: <code>java/src/daos/ </code>
@@ -64,6 +67,10 @@ Representa la entidad Address.
 ---
 
 ## Relación uno a muchos
+
+## Escenario
+Aplicación de comercio electrónico: un carrito de la compra que almacena varias referencias.
+Una referencia solo puede estar en un carrito de la compra.
 
 ### CartDAO
 
@@ -88,6 +95,31 @@ Representa la entidad Cart, el carrito de la compra.
 Ubicación: <code>java/src/entities/ </code>
 
 Representa la entidad ítem, la referencia añadida al carrito de la compra.
+
+---
+
+## Relación muchos a muchos
+
+## Escenario
+Aplicación de gestión de varios proyectos a varios empleados.
+
+### EmployeeDAO
+
+Ubicación: <code>java/src/daos/ </code>
+
+Clase que ejecuta las operaciones CRUD de los empleados.
+
+### Entidad Employee
+
+Ubicación: <code>java/src/entities/ </code>
+
+Representa la entidad Employee, el empleado.
+
+### Entidad Project
+
+Ubicación: <code>java/src/entities/ </code>
+
+Representa la entidad proyecto, que está asignado a cada empleado.
 
 ---
 
