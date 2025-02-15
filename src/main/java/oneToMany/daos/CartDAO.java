@@ -1,19 +1,21 @@
-package daos;
+package oneToMany.daos;
 
-import entities.User;
+import oneToMany.entities.Cart;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import utils.HibernateUtil;
+import common.utils.HibernateUtil;
 
 import java.util.List;
 
-public class UserDAO {
+public class CartDAO {
 
-    public void saveUser(User user) {
-        Transaction transaction = null;
+    Transaction transaction;
+
+    public void saveCart(Cart cart) {
+        transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.persist(user);
+            session.persist(cart);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -22,23 +24,23 @@ public class UserDAO {
         }
     }
 
-    public User getUserById(Long id) {
+    public Cart getCartById(Long id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.get(User.class, id);
+            return session.get(Cart.class, id);
         }
     }
 
-    public List<User> getAllUsers() {
+    public List<Cart> getAllCarts() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from User", User.class).list();
+            return session.createQuery("from Cart", Cart.class).list();
         }
     }
 
-    public boolean  updateUser(User user) {
-        Transaction transaction = null;
+    public boolean  updateCart(Cart cart) {
+        transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.merge(user);
+            session.merge(cart);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -49,13 +51,13 @@ public class UserDAO {
         }
     }
 
-    public boolean deleteUser(Long id) {
-        Transaction transaction = null;
+    public boolean deleteCart(Long id) {
+        transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            User user = getUserById(id);
-            if (user != null) {
-                session.remove(user);
+            Cart cart = getCartById(id);
+            if (cart != null) {
+                session.remove(cart);
             }
             transaction.commit();
             return true;

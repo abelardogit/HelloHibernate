@@ -1,4 +1,4 @@
-package entities;
+package oneToMany.entities;
 
 import jakarta.persistence.*;
 

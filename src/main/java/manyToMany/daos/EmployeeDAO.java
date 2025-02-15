@@ -1,21 +1,19 @@
-package daos;
+package manyToMany.daos;
 
-import entities.Cart;
+import manyToMany.entities.Employee;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import utils.HibernateUtil;
+import common.utils.HibernateUtil;
 
 import java.util.List;
 
-public class CartDAO {
+public class EmployeeDAO {
 
-    Transaction transaction;
-
-    public void saveCart(Cart cart) {
-        transaction = null;
+    public void saveEmployee(Employee employee) {
+        Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.persist(cart);
+            session.persist(employee);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -24,23 +22,38 @@ public class CartDAO {
         }
     }
 
-    public Cart getCartById(Long id) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.get(Cart.class, id);
-        }
-    }
-
-    public List<Cart> getAllCarts() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from Cart", Cart.class).list();
-        }
-    }
-
-    public boolean  updateCart(Cart cart) {
-        transaction = null;
+    public void saveEmployees(Employee[] employees) {
+        Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.merge(cart);
+            for(Employee employee : employees) {
+                session.persist(employee);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
+
+    public Employee getEmployeeById(Long id) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.get(Employee.class, id);
+        }
+    }
+
+    public List<Employee> getAllEmployees() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Employee", Employee.class).list();
+        }
+    }
+
+    public boolean  updateEmployee(Employee employee) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.merge(employee);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -51,13 +64,13 @@ public class CartDAO {
         }
     }
 
-    public boolean deleteCart(Long id) {
-        transaction = null;
+    public boolean deleteEmployee(Long id) {
+        Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Cart cart = getCartById(id);
-            if (cart != null) {
-                session.remove(cart);
+            Employee employee = getEmployeeById(id);
+            if (employee != null) {
+                session.remove(employee);
             }
             transaction.commit();
             return true;

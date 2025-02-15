@@ -1,63 +1,44 @@
-package daos;
+package oneToOne.daos;
 
-import entities.Item;
+import oneToOne.entities.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import utils.HibernateUtil;
+import common.utils.HibernateUtil;
 
 import java.util.List;
 
-public class ItemDAO {
+public class UserDAO {
 
-    public void saveItem(Item item) {
+    public void saveUser(User user) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.persist(item);
+            session.persist(user);
             transaction.commit();
         } catch (Exception e) {
-            System.err.println(e.getLocalizedMessage());
             if (transaction != null) {
                 transaction.rollback();
             }
         }
     }
 
-    public Item getItemById(Long id) {
+    public User getUserById(Long id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.get(Item.class, id);
+            return session.get(User.class, id);
         }
     }
 
-    public List<Item> getAllItems() {
+    public List<User> getAllUsers() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from Item", Item.class).list();
+            return session.createQuery("from User", User.class).list();
         }
     }
 
-    public boolean  updateItem(Item item) {
+    public boolean  updateUser(User user) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.merge(item);
-            transaction.commit();
-            return true;
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            return false;
-        }
-    }
-
-    public boolean deleteItem(Long id) {
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            Item item = getItemById(id);
-            if (item != null) {
-                session.remove(item);
-            }
+            session.merge(user);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -68,4 +49,21 @@ public class ItemDAO {
         }
     }
 
+    public boolean deleteUser(Long id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            User user = getUserById(id);
+            if (user != null) {
+                session.remove(user);
+            }
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
 }

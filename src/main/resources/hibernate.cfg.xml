@@ -29,12 +29,12 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Entities -->
-        <mapping class="entities.Student"/>
-        <mapping class="entities.User"/>
-        <mapping class="entities.Address"/>
-        <mapping class="entities.Cart"/>
-        <mapping class="entities.Item"/>
-        <mapping class="entities.Employee"/>
-        <mapping class="entities.Project"/>
+        <mapping class="singleEntity.entity.Student"/>
+        <mapping class="oneToOne.entities.User"/>
+        <mapping class="oneToOne.entities.Address"/>
+        <mapping class="oneToMany.entities.Cart"/>
+        <mapping class="oneToMany.entities.Item"/>
+        <mapping class="manyToMany.entities.Employee"/>
+        <mapping class="manyToMany.entities.Project"/>
     </session-factory>
 </hibernate-configuration>
