@@ -14,15 +14,18 @@ sobre cómo gestionar entidades con el framework Hibernate.
 Ubicación: <code>java/src/</code>
 
 La clase principal de este proyecto.
-En ella podrás encontrar 4 métodos:
+
+En ella podrás encontrar 3 métodos:
 - singleEntity: código de ejemplo de cómo crear un dao, una entidad, cómo se guarda en la base de datos y, finalmente, cómo 
 se cierra la sesión.
-- oneToOne: código de ejemplo de cómo crear un dao, dos entidades, cómo se guardan en la base de datos y, finalmente, cómo
-se cierra la sesión.
+- oneToOne: código de ejemplo de cómo crear un dao (UserDAO), dos entidades (User y Address), cómo se guardan en la base de datos 
+y, finalmente, cómo se cierra la sesión.
+- oneToMany: código de ejemplo de cómo crear dos daos (CartDAO e ItemDAO), dos entidades (Cart e Item), cómo se guardan 
+en la base de datos y, finalmente, cómo se cierra la sesión.
 
 ---
 
-## Single entity
+## Una entidad simple
 
 ### StudentDAO
 
@@ -38,7 +41,7 @@ Representa la entidad Student.
 
 ---
 
-## One to one relationship
+## Relación uno a uno
 
 ### UserDAO
 
@@ -57,6 +60,34 @@ Representa la entidad User.
 Ubicación: <code>java/src/entities/ </code>
 
 Representa la entidad Address.
+
+---
+
+## Relación uno a muchos
+
+### CartDAO
+
+Ubicación: <code>java/src/daos/ </code>
+
+Clase que ejecuta las operaciones CRUD de un carrito de compra.
+
+### ItemDAO
+
+Ubicación: <code>java/src/daos/ </code>
+
+Clase que ejecuta las operaciones CRUD de una referencia.
+
+### Entidad Cart
+
+Ubicación: <code>java/src/entities/ </code>
+
+Representa la entidad Cart, el carrito de la compra.
+
+### Entidad Item
+
+Ubicación: <code>java/src/entities/ </code>
+
+Representa la entidad ítem, la referencia añadida al carrito de la compra.
 
 ---
 

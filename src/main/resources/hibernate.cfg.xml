@@ -32,5 +32,7 @@
         <mapping class="entities.Student"/>
         <mapping class="entities.User"/>
         <mapping class="entities.Address"/>
+        <mapping class="entities.Cart"/>
+        <mapping class="entities.Item"/>
     </session-factory>
 </hibernate-configuration>
