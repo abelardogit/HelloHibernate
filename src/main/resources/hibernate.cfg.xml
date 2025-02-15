@@ -7,9 +7,9 @@
         <!-- JDBC Database connection settings -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <!-- Fill in with your data -->
-        <property name="hibernate.connection.url">jdbc:mysql://<your_host>:<your_port>/<your_database></property>
-        <property name="hibernate.connection.username"><username></property>
-        <property name="hibernate.connection.password"><password of the username></property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/hellohibernate?createDatabaseIfNotExist=true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">CY$Fzw10Am</property>
 
         <!-- JDBC connection pool settings -->
         <property name="hibernate.c3p0.min_size">5</property>
@@ -29,5 +29,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Entities -->
+        <mapping class="entities.Student"/>
     </session-factory>
 </hibernate-configuration>
